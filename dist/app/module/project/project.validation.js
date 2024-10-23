@@ -5,8 +5,6 @@ const zod_1 = require("zod");
 // Project creation schema
 const createProjectZodSchema = zod_1.z.object({
     title: zod_1.z.string({ required_error: 'Title is required' }),
-    logo: zod_1.z.string({ required_error: 'Logo is required' }),
-    banner: zod_1.z.string({ required_error: 'Banner is required' }),
     description: zod_1.z.string({ required_error: 'Description is required' }),
     category: zod_1.z.enum(['Full Stack', 'Frontend', 'Backend'], {
         required_error: 'Category is required',
@@ -38,8 +36,6 @@ exports.createProjectZodSchema = createProjectZodSchema;
 // Project update schema
 const updateProjectZodSchema = zod_1.z.object({
     title: zod_1.z.string().optional(),
-    logo: zod_1.z.string().optional(),
-    banner: zod_1.z.string().optional(),
     description: zod_1.z.string().optional(),
     category: zod_1.z.enum(['Full Stack', 'Frontend', 'Backend']).optional(),
     technologies: zod_1.z.array(zod_1.z.string()).optional(),

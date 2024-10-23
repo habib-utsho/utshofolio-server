@@ -21,7 +21,7 @@ const axiosInstance = axios.create({
 // Schedule the self-ping every 10 minutes (you can adjust the frequency)
 cron.schedule('*/10 * * * *', () => {
   axiosInstance
-    .get(`https://traveleaf-server.onrender.com`) //TODO: update live url
+    .get(`https://utshofolio-server.onrender.com/api/v1`)
     .then((response) => {
       console.log('😀🎉 Self-ping successful:', response.status)
     })
