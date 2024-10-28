@@ -43,6 +43,7 @@ const ProjectSchema = new Schema<TProject>(
     },
     position: {
       type: Number,
+      default: 0,
     },
     isFeatured: {
       type: Boolean,

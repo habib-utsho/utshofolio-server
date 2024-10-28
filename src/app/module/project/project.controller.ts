@@ -53,10 +53,10 @@ const getProjectById: RequestHandler = catchAsync(async (req, res) => {
 const updateProjectById: RequestHandler = catchAsync(async (req, res) => {
   const project = await projectServices.updateProjectById(
     req.params?.id,
-    (req.files as { [fieldname: string]: Express.Multer.File[] }).logo[0] ??
+    (req.files as { [fieldname: string]: Express.Multer.File[] })?.logo?.[0] ??
       null,
-    (req.files as { [fieldname: string]: Express.Multer.File[] }).banner[0] ??
-      null,
+    (req.files as { [fieldname: string]: Express.Multer.File[] })
+      ?.banner?.[0] ?? null,
     req.body,
   )
   if (!project) {
