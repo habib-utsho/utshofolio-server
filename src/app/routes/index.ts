@@ -3,6 +3,7 @@ import { projectRouter } from '../module/project/project.route'
 import { experienceRouter } from '../module/experience/experience.route'
 import { educationRouter } from '../module/education/education.route'
 import { technologyRouter } from '../module/technologies/technology.route'
+import { statsRouter } from '../module/stats/stats.route'
 
 const router = Router()
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
   {
     path: '/technology',
     route: technologyRouter,
+  },
+  {
+    path: '/stats',
+    route: statsRouter,
   },
 ]
 
