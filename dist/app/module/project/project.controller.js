@@ -56,8 +56,8 @@ const getProjectById = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
 }));
 // Update a single project by ID
 const updateProjectById = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c;
-    const project = yield project_service_1.projectServices.updateProjectById((_a = req.params) === null || _a === void 0 ? void 0 : _a.id, (_b = req.files.logo[0]) !== null && _b !== void 0 ? _b : null, (_c = req.files.banner[0]) !== null && _c !== void 0 ? _c : null, req.body);
+    var _a, _b, _c, _d, _e, _f, _g;
+    const project = yield project_service_1.projectServices.updateProjectById((_a = req.params) === null || _a === void 0 ? void 0 : _a.id, (_d = (_c = (_b = req.files) === null || _b === void 0 ? void 0 : _b.logo) === null || _c === void 0 ? void 0 : _c[0]) !== null && _d !== void 0 ? _d : null, (_g = (_f = (_e = req.files) === null || _e === void 0 ? void 0 : _e.banner) === null || _f === void 0 ? void 0 : _f[0]) !== null && _g !== void 0 ? _g : null, req.body);
     if (!project) {
         throw new appError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'Project not found!');
     }

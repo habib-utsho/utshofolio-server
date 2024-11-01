@@ -42,6 +42,7 @@ const ProjectSchema = new mongoose_1.Schema({
     },
     position: {
         type: Number,
+        default: 0,
     },
     isFeatured: {
         type: Boolean,
