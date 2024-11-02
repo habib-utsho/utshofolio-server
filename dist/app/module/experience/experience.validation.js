@@ -11,6 +11,7 @@ const createExperienceZodSchema = zod_1.z.object({
         required_error: 'Job type is required',
     }),
     location: zod_1.z.string().optional(),
+    description: zod_1.z.string().optional(),
     isCourse: zod_1.z.boolean().default(false),
     isDeleted: zod_1.z.boolean().default(false),
 });
@@ -22,6 +23,7 @@ const updateExperienceZodSchema = zod_1.z.object({
     timePeriod: zod_1.z.string().optional(),
     jobType: zod_1.z.enum(['Remote', 'On Site', 'Hybrid']).optional(),
     location: zod_1.z.string().optional(),
+    description: zod_1.z.string().optional(),
     isCourse: zod_1.z.boolean().optional(),
     isDeleted: zod_1.z.boolean().optional(),
 });

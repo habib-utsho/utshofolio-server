@@ -24,6 +24,9 @@ const ExperienceSchema = new mongoose_1.Schema({
     location: {
         type: String, // Optional: location of the job
     },
+    description: {
+        type: String, // Optional: job description
+    },
     position: {
         type: Number,
         default: 0,

@@ -25,6 +25,9 @@ const ExperienceSchema = new Schema<TExperience>(
     location: {
       type: String, // Optional: location of the job
     },
+    description: {
+      type: String, // Optional: job description
+    },
     position: {
       type: Number,
       default: 0,
