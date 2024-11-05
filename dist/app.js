@@ -19,16 +19,16 @@ const errHandler_1 = require("./app/middleware/errHandler");
 const routes_1 = __importDefault(require("./app/routes"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const axios_1 = __importDefault(require("axios"));
-const node_cron_1 = __importDefault(require("node-cron"));
+const cron_1 = require("cron");
 const app = (0, express_1.default)();
 // Create an axios instance with a longer timeout
 const axiosInstance = axios_1.default.create({
     timeout: 30000, // 30 seconds timeout
 });
-// Schedule the self-ping every 10 minutes (you can adjust the frequency)
-node_cron_1.default.schedule('*/10 * * * *', () => {
+// Set up a cron job to ping the server every 10 minutes
+const job = new cron_1.CronJob('*/10 * * * *', () => {
     axiosInstance
-        .get(`https://utshofolio-server.onrender.com/api/v1`)
+        .get('https://utshofolio-server.onrender.com/api/v1')
         .then((response) => {
         console.log('😀🎉 Self-ping successful:', response.status);
     })
@@ -36,6 +36,8 @@ node_cron_1.default.schedule('*/10 * * * *', () => {
         console.error('😡 Self-ping failed:', error.message);
     });
 });
+// Start the cron job
+job.start();
 app.get('/api/v1', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send('utshofolio home route!');
 }));

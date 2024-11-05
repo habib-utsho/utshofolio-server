@@ -9,7 +9,7 @@ import {
 import router from './app/routes'
 import cookieParser from 'cookie-parser'
 import axios from 'axios'
-import cron from 'node-cron'
+import { CronJob } from 'cron'
 
 const app = express()
 
@@ -18,10 +18,10 @@ const axiosInstance = axios.create({
   timeout: 30000, // 30 seconds timeout
 })
 
-// Schedule the self-ping every 10 minutes (you can adjust the frequency)
-cron.schedule('*/10 * * * *', () => {
+// Set up a cron job to ping the server every 10 minutes
+const job = new CronJob('*/10 * * * *', () => {
   axiosInstance
-    .get(`https://utshofolio-server.onrender.com/api/v1`)
+    .get('https://utshofolio-server.onrender.com/api/v1')
     .then((response) => {
       console.log('😀🎉 Self-ping successful:', response.status)
     })
@@ -29,6 +29,9 @@ cron.schedule('*/10 * * * *', () => {
       console.error('😡 Self-ping failed:', error.message)
     })
 })
+
+// Start the cron job
+job.start()
 
 app.get('/api/v1', async (req, res) => {
   res.send('utshofolio home route!')
